@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="jquery.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        var host = window.location.origin;
+        $("textarea").keypress(function (e) {
+          if (e.which == "13") {
+            $("p").text("");
+            var text = $("textarea").val();
+            const a = "que bola";
+
+            $.post(
+              host,
+              `${a}`,
+              function () {
+                alert("success");
+              },
+              "json"
+            ).always(function (data) {
+              if (data.status === 200) {
+                console.log(data.responseText);
+                console.log(JSON.parse(data.responseText.replace("'", '"')));
+              }
+            });
+            //$.get(host, { seach: text }, function (data, status) {
+            //$('p').text(data)
+            //  $("p").append(data);
+            //window.location.href = 'http://' + data + '?seach=' + text
+            //});
+            return false;
+          }
+        });
+      });
+    </script>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Google.fsd</title>
+  </head>
+  <body>
+    <div>
+      <h1>Scrapper Web</h1>
+      <textarea
+        placeholder="write your query and enter press"
+        wrap="off"
+      ></textarea>
+    </div>
+    <section>
+      <p>Here look html</p>
+    </section>
+  </body>
+</html>
