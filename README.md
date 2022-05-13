@@ -40,14 +40,14 @@ finalmente persistir todos estos cálculos realizados en la _db_. Si ya existier
 
 ### Procesamiento del Consulta
 
-![](img/jupyter-1.png)
+![](img/jupyter-2.png)
 
 Esta sección es mucho más interactiva y rápida que la anterior, aquí puede modificar la variable `query` para decirle al modelo
 sobre que tema desea buscar, ademas puede modificar el parámetro `alpha` y de esta manera ver cual valor genera mejor ranking
 
 ### Inspección del Ranking
 
-![](img/jupyter-1.png)
+![](img/jupyter-3.png)
 
 Luego en con estas lineas finales se puede iterar relativamente cómodo por toda la lista de documentos y ver cual fue el ranking propuesto. Además
 se ofrece la función pretty para resaltar en los documentos los términos que se consideraron relevantes para la consulta en cuestión
