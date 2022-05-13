@@ -43,11 +43,9 @@ def main():
             document_dict[hsh] = Document(all_text, url)
 
     N = len(document_dict)
-    print(f"{N} document total")
-
     term_dict = {}
 
-    bar = get_progressbar(N, 'tokenizer documents')
+    bar = get_progressbar(N, f'tokenizer {N} documents')
     bar.start()
     for i, key in enumerate(document_dict):
         doc = nlp(document_dict[key].text)
@@ -79,9 +77,8 @@ def main():
     bar.finish()
 
     tn = len(term_dict)
-    print(f"{tn} term total")
 
-    bar = get_progressbar(N, 'term indexation')
+    bar = get_progressbar(N, f'{tn} term indexation')
     bar.start()
     for i, key in enumerate(document_dict):
         f_list = []

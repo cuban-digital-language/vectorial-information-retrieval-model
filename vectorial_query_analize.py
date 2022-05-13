@@ -19,7 +19,7 @@ port = os.getenv('PORT', 6379)
 vectorial_db = Redis(host=host, port=port, db=6)
 
 
-def vectorized(query):
+def vectorized(query, alpha = 0.5):
     key = 'query'
     query_term_dict = {}
     doc = nlp(query)
@@ -63,7 +63,7 @@ def vectorized(query):
             fi = 0
 
         idf = log(N/len(ast.literal_eval(dict_.decode())))
-        q_vector.append((0.5 + 0.5 * fi/fiq_max) * idf)
+        q_vector.append((alpha + (1- alpha) * fi/fiq_max) * idf)
 
     return q_vector, query_term_dict
 

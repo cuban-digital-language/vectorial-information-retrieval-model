@@ -1,11 +1,9 @@
 build:
-	pip install -U pip setuptools wheel 
-	pip install -U spacy 
-	python -m spacy download es_core_news_sm
-	pip install redis
-	pip install progressbar
-	pip install ipykernel
-	pip install notebook
+	pip install -r requirements.txt 
+	touch .env 
+	echo PORT=$(port) > .env
+	docker-compose build
 
 run: 
-  	docker-compose up -d && jupyter notebook test.ipynb
+	docker-compose up -d  
+	jupyter notebook test.ipynb --post=$(port)

@@ -16,7 +16,6 @@ services:
 #       - PORT_DB=6379
     
  redis-vectorial-model-db:
-   container_name: redis
    image: redis:6-alpine
    ports:
      - ${PORT}:6379

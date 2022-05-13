@@ -1,5 +1,10 @@
 # SRI sobre el corpus de comentarios realizados en redes sociales cubanas
 
+## Intergrantes
+
+- Daniel Orlando Ortiz Pacheco
+- Aldo Javier Verdecia Delgado
+
 ## Resumen
 
 Para crear un entorno con muchos comentarios reales extraídos de las distintas redes sociales cubana, donde se puede mezclar textos autogenerados por una inteligencia artificial, y que un grupo de persona de dicha nacionalidad intente reconocer a la IA entre todos estos textos. Para automatizar la recuperación de los comentarios reales que estén relacionado con algún tema en especifico, se realiza una investigación para seleccionar el mejor Modelo de Recuperación de Información para listar los comentarios más coherentes con la consulta planteada de inicio

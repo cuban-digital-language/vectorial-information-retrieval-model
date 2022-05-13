@@ -29,3 +29,19 @@ def get_progressbar(N, name = ""):
         widgets=[progressbar.Bar('#', '[', ']'), 
         name, 
         progressbar.Percentage()])
+
+    
+def pretty(dict_, *texts):
+    result = list(texts)
+    for key in dict_:
+        for i, text in enumerate(texts):
+            lower_text : str = text.lower()
+            index = 0
+            while True:
+                try: 
+                    index = lower_text.index(key, index)
+                    result[i] = text[0:index] + "\33[47m{}\033[00m".format(text[index: index + len(key)]) + text[index + len(key) + 1: ]
+                    index += len(key) 
+                except ValueError:
+                    break
+    return tuple(result)
