@@ -14,5 +14,13 @@ RUN pip install notebook
 COPY . ./usr/src
 RUN cd ./usr/src
 
-# EXPOSE 8888
-CMD ["bash","jupyter", "notebook", "test.ipynb", "--allow-root"]
+EXPOSE 8888
+EXPOSE 8889
+
+ENV HOST_DB=redis
+ENV PORT_DB=6379
+
+
+
+CMD ["bash", "jupyter", "notebook"]
+# CMD ["bash","jupyter", "notebook", "test.ipynb", "--allow-root", "--ip", "'0.0.0.0'"]

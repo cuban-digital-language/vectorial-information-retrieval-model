@@ -1,26 +1,34 @@
-version: '3.2'
+version: '3.1'
 
 services:
- web:
-    build: .
-    ports:
-      - "8888:8888"
-    command: jupyter notebook --allow-root
-    # networks:
-    #   - vectorial_model_network
-#  redis:
-#    container_name: redis
-#    image: redis:6-alpine
-#   #  ports:
-#   #    - 6379:6379
-#    volumes:
-#      - redis_volume:/data
-  #  networks:
-  #     - vectorial_model_network
+#  web:
+#     build: .
+#     ports:
+#       - 8888:8888
+#     command: jupyter notebook ./usr/src/test.ipynb --allow-root --ip '0.0.0.0' --NotebookApp.token='' --NotebookApp.password='matcom'
+#     # command: jupyter notebook ,,, --ip '0.0.0.0' --allow-root 
+#     networks:
+#       - vectorial_model_network
+#     depends_on:
+#       - redis
+#     environment:
+#       - HOST_DB=redis
+#       - PORT_DB=6379
+    
+ redis-vectorial-model-db:
+   container_name: redis
+   image: redis:6-alpine
+   ports:
+     - ${PORT}:6379
+   volumes:
+     - redis_volume:/data
+   networks:
+      - vectorial_model_network
 
-# volumes:
-#   redis_volume:
-#    driver: local
+volumes:
+  redis_volume:
+   driver: local
   
-# networks:
-#   vectorial_model_network: {}
+networks:
+  vectorial_model_network: 
+    driver: bridge
