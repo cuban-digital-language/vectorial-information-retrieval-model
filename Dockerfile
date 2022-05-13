@@ -1,4 +1,5 @@
-FROM python:3.9.10-alpine3.15
+FROM python:3.9.10
+# FROM jupyter/base-notebook
 
 RUN pip install -U pip setuptools wheel
 RUN pip install -U spacy
@@ -8,6 +9,10 @@ RUN pip install redis
 RUN pip install progressbar
 
 RUN pip install ipykernel
+RUN pip install notebook
 
-EXPOSE 8889
-CMD ['jupyter' 'notebook', 'test.ipynb']
+COPY . ./usr/src
+RUN cd ./usr/src
+
+# EXPOSE 8888
+CMD ["bash","jupyter", "notebook", "test.ipynb", "--allow-root"]
